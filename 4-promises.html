@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Delivery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #deliveryStatus {
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="deliveryStatus">Delivery Status:</div>
+
+  <script>
+
+    let pizzaDelivered = true; 
+
+
+    let pizzaPromise = new Promise(function(resolve, reject){
+      // If the pizza is delivered (resolve)
+      if (pizzaDelivered){
+        setTimeout(function(){
+          resolve("Pizza delivered"); // fulfillment or success
+        }, 2000); 
+      }
+
+      // If the pizza is not delivered (reject)
+      else {
+        setTimeout(function(){
+          reject("No pizza for you... pray 4 driver"); // error 
+        }, 2000); 
+      }
+    })
+
+    pizzaPromise.then(function(someString){
+      document.getElementById("deliveryStatus").textContent = someString
+    })
+    .catch(function(someString){
+      document.getElementById("deliveryStatus").textContent = someString
+    })
+
+  </script>
+
+
+</body>
+
+</html>
